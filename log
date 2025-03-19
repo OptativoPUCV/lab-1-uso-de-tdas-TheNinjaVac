@@ -4,3 +4,14 @@ Wed, Mar 19, 2025  9:36:26 AM:
  tests:  1|4
 total_score: 10/70
 3f6cb15
+Wed, Mar 19, 2025  3:13:16 PM: 
+ exercises.c | 3 +++
+ 1 file changed, 3 insertions(+)
+In file included from test.c:5:0:
+exercises.c: In function 'sumaLista':
+exercises.c:61:8: error: unused variable 'suma' [-Werror=unused-variable]
+    int suma = 0;
+        ^~~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+ff13586
