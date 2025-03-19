@@ -61,7 +61,7 @@ int sumaLista(List *L) {
    int suma = 0;
    int *elementos = first(L);
    printf("%d", (*elementos));
-   return 0;
+   return suma;
 }
 
 /*
