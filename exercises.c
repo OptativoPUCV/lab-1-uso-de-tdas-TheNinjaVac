@@ -60,7 +60,7 @@ retorne la suma de sus elementos.
 int sumaLista(List *L) {
    int suma = 0;
    int *elementos = first(L);
-   printf("%d", (*elementos));
+   printf("El primer elemento es %d", (*elementos));
    return suma;
 }
 
