@@ -33,3 +33,9 @@ Fri, Mar 21, 2025  7:50:23 PM:
  tests:  2|3
 total_score: 20/70
 12a1a5c
+Fri, Mar 21, 2025  7:55:10 PM: 
+ exercises.c | 9 +++++++++
+ 1 file changed, 9 insertions(+)
+ tests:  2|3
+total_score: 20/70
+b62ef14
