@@ -39,3 +39,17 @@ Fri, Mar 21, 2025  7:55:10 PM:
  tests:  2|3
 total_score: 20/70
 b62ef14
+Fri, Mar 21, 2025  7:57:51 PM: 
+ exercises.c | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+In file included from test.c:5:0:
+exercises.c: In function 'eliminaElementos':
+exercises.c:87:22: error: implicit declaration of function 'previous' [-Werror=implicit-function-declaration]
+          elementos = previous(L);
+                      ^~~~~~~~
+exercises.c:87:20: error: assignment makes pointer from integer without a cast [-Werror=int-conversion]
+          elementos = previous(L);
+                    ^
+cc1.exe: all warnings being treated as errors
+Compilation failed
+8ef733e
