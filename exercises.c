@@ -127,7 +127,7 @@ void printStack(Stack* stack, const char* nombre) {
 
    while (top(stack) != NULL) {
        char* valor = (char*)top(stack);
-       printf("%c ", *valor);
+       printf("%c", *valor);
        push(tempStack, pop(stack));  // Mover a la pila temporal
    }
 
@@ -167,7 +167,7 @@ int parentesisBalanceados(char *cadena) {
    
    while (top(PilaC2) != NULL)
    {
-      if ( (top(PilaC2)) != (top(PilaC1))) return 1;
+      if ( (top(PilaC2)) == (top(PilaC1))) return 1;
       pop(PilaC1);
       pop(PilaC2);
    }
