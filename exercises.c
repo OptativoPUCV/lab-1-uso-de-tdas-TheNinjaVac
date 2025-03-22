@@ -143,33 +143,27 @@ void printStack(Stack* stack, const char* nombre) {
 
 
 int parentesisBalanceados(char *cadena) {
-   Stack* pilaAuxiliar = create_stack();
-   Stack* PilaC1 = create_stack();
-   Stack* PilaC2 = create_stack();
-   for( size_t i = 0; cadena[i] != '\0' ; i ++)
-   {
-      char caracter = cadena[i];
-      char *ptrChar = (char*) malloc(sizeof(char));
-      *ptrChar = caracter;
-      push(pilaAuxiliar, ptrChar);
-      push(PilaC1, ptrChar);
-   }
+   Stack* pila = create_stack();
 
-   printStack(pilaAuxiliar, "pilaAuxiliar");
-   printStack(PilaC1, "PilaC1");
-   while (top(pilaAuxiliar) != NULL)
-   {
-      push(PilaC2, top(pilaAuxiliar));
-      pop(pilaAuxiliar);
-   }
+   for (size_t i = 0; cadena[i] != '\0'; i++) {
+       char caracter = cadena[i];
 
-   printStack(PilaC2, "PilaC2");
-   
-   while (top(PilaC2) != NULL)
-   {
-      if ( (top(PilaC2)) != (top(PilaC1))) return 1;
-      pop(PilaC1);
-      pop(PilaC2);
+       if (caracter == '(' || caracter == '[' || caracter == '{') {
+           char *ptrChar = (char*) malloc(sizeof(char));
+           *ptrChar = caracter;
+           push(pila, ptrChar);
+       } else if (caracter == ')' || caracter == ']' || caracter == '}') {
+           if (top(pila) == NULL) return 1; // Error: cierre sin apertura
+           char *tope = (char*) pop(pila); // Recuperamos el valor de la pila
+           int distancia = (int)caracter - (int)(*tope);
+           free(tope); // Liberamos memoria después de usar
+
+           if (distancia > 2) return 1; // Error: mal emparejado
+       }
+   }
+   // Vaciar la pila en caso de que queden elementos (evita fuga de memoria)
+   while (top(pila) != NULL) {
+       free(pop(pila));
    }
    return 0;
 }
