@@ -182,3 +182,9 @@ stack.h:11:6: note: expected 'void *' but argument is of type 'char'
 cc1.exe: all warnings being treated as errors
 Compilation failed
 79d66cf
+Fri, Mar 21, 2025 10:34:35 PM: 
+ exercises.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests:  5|1
+total_score: 50/70
+3fb0aca

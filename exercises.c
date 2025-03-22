@@ -130,8 +130,8 @@ int parentesisBalanceados(char *cadena) {
       char caracter = cadena[i];
       char *ptrChar = (char*) malloc(sizeof(char));
       *ptrChar = caracter;
-      push(pilaAuxiliar, *ptrChar);
-      push(PilaC1, *ptrChar);
+      push(pilaAuxiliar, ptrChar);
+      push(PilaC1, ptrChar);
 
    }
    while (top(pilaAuxiliar) != NULL)
