@@ -121,27 +121,6 @@ paraéntesis balanceados. Retorna 1 si están balanceados,
 0 en caso contrario.
 */
 
-void printStack(Stack* stack, const char* nombre) {
-   printf("Contenido de la pila %s: ", nombre);
-   Stack* tempStack = create_stack();  // Pila temporal para no perder datos
-
-   while (top(stack) != NULL) {
-       char* valor = (char*)top(stack);
-       printf("%c", *valor);
-       push(tempStack, pop(stack));  // Mover a la pila temporal
-   }
-
-   // Restaurar la pila original
-   while (top(tempStack) != NULL) {
-       push(stack, pop(tempStack));
-   }
-
-   printf("\n");
-   free(tempStack);
-}
-
-
-
 int parentesisBalanceados(char *cadena) {
    Stack* pila = create_stack();
 
@@ -153,17 +132,21 @@ int parentesisBalanceados(char *cadena) {
            *ptrChar = caracter;
            push(pila, ptrChar);
        } else if (caracter == ')' || caracter == ']' || caracter == '}') {
-           if (top(pila) == NULL) return 0; // Error: cierre sin apertura
+           if (top(pila) == NULL) return 1; // Retorna 1 si hay un cierre sin apertura
            char *tope = (char*) pop(pila); // Recuperamos el valor de la pila
            int distancia = (int)caracter - (int)(*tope);
            free(tope); // Liberamos memoria después de usar
 
-           if (distancia > 2) return 1;
+           if (distancia > 2) return 1; // Retorna 1 si hay un error de emparejamiento
        }
    }
+
+   int balanceado = (top(pila) == NULL) ? 0 : 1; // Si la pila queda vacía, es balanceado (0), si no, es 1.
+
+   // Vaciar la pila en caso de que queden elementos (evita fugas de memoria)
    while (top(pila) != NULL) {
        free(pop(pila));
    }
-   return 1;
-}
 
+   return balanceado;
+}
