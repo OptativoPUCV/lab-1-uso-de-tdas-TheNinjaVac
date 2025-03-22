@@ -121,6 +121,27 @@ paraéntesis balanceados. Retorna 1 si están balanceados,
 0 en caso contrario.
 */
 
+void printStack(Stack* stack, const char* nombre) {
+   printf("Contenido de la pila %s: ", nombre);
+   Stack* tempStack = create_stack();  // Pila temporal para no perder datos
+
+   while (top(stack) != NULL) {
+       char* valor = (char*)top(stack);
+       printf("%c ", *valor);
+       push(tempStack, pop(stack));  // Mover a la pila temporal
+   }
+
+   // Restaurar la pila original
+   while (top(tempStack) != NULL) {
+       push(stack, pop(tempStack));
+   }
+
+   printf("\n");
+   free(tempStack);
+}
+
+
+
 int parentesisBalanceados(char *cadena) {
    Stack* pilaAuxiliar = create_stack();
    Stack* PilaC1 = create_stack();
@@ -132,19 +153,24 @@ int parentesisBalanceados(char *cadena) {
       *ptrChar = caracter;
       push(pilaAuxiliar, ptrChar);
       push(PilaC1, ptrChar);
-
    }
+
+   printStack(pilaAuxiliar, "pilaAuxiliar");
+   printStack(PilaC1, "PilaC1");
    while (top(pilaAuxiliar) != NULL)
    {
       push(PilaC2, top(pilaAuxiliar));
       pop(pilaAuxiliar);
    }
+
+   printStack(PilaC2, "PilaC2");
+   /*
    while (top(PilaC2) != NULL)
    {
       if ( (top(PilaC2)) != (top(PilaC1))) return 1;
       pop(PilaC1);
       pop(PilaC2);
-   }
+   }*/
    return 0;
 }
 
