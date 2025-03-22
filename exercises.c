@@ -158,7 +158,7 @@ int parentesisBalanceados(char *cadena) {
            int distancia = (int)caracter - (int)(*tope);
            free(tope); // Liberamos memoria después de usar
 
-           if (distancia > 2) return 0;
+           if (distancia > 2) return 1;
        }
    }
    while (top(pila) != NULL) {
