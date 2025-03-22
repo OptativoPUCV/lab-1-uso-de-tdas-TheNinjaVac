@@ -153,18 +153,17 @@ int parentesisBalanceados(char *cadena) {
            *ptrChar = caracter;
            push(pila, ptrChar);
        } else if (caracter == ')' || caracter == ']' || caracter == '}') {
-           if (top(pila) == NULL) return 1; // Error: cierre sin apertura
+           if (top(pila) == NULL) return 0; // Error: cierre sin apertura
            char *tope = (char*) pop(pila); // Recuperamos el valor de la pila
            int distancia = (int)caracter - (int)(*tope);
            free(tope); // Liberamos memoria después de usar
 
-           if (distancia > 2) return 1; // Error: mal emparejado
+           if (distancia > 2) return 0;
        }
    }
-   // Vaciar la pila en caso de que queden elementos (evita fuga de memoria)
    while (top(pila) != NULL) {
        free(pop(pila));
    }
-   return 0;
+   return 1;
 }
 
