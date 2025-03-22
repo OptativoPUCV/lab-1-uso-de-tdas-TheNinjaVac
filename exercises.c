@@ -164,13 +164,13 @@ int parentesisBalanceados(char *cadena) {
    }
 
    printStack(PilaC2, "PilaC2");
-   /*
+   
    while (top(PilaC2) != NULL)
    {
       if ( (top(PilaC2)) != (top(PilaC1))) return 1;
       pop(PilaC1);
       pop(PilaC2);
-   }*/
+   }
    return 0;
 }
 
