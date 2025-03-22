@@ -136,7 +136,7 @@ int parentesisBalanceados(char *cadena) {
       caracteres++;
    }
    if (caracteres % 2 != 0){
-      return 0;
+      return 1;
    }
    while (top(pilaAuxiliar) != NULL)
    {
