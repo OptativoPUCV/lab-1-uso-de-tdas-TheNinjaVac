@@ -118,3 +118,17 @@ Fri, Mar 21, 2025 10:25:38 PM:
  tests:  7|1
 total_score: 60/70
 8d4adb6
+Fri, Mar 21, 2025 10:27:43 PM: 
+ exercises.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+In file included from test.c:5:0:
+exercises.c: In function 'parentesisBalanceados':
+exercises.c:149:16: error: format '%c' expects argument of type 'int', but argument 2 has type 'void *' [-Werror=format=]
+       printf("%c  %c",top(PilaC2),top(PilaC1) );
+                ^
+exercises.c:149:20: error: format '%c' expects argument of type 'int', but argument 3 has type 'void *' [-Werror=format=]
+       printf("%c  %c",top(PilaC2),top(PilaC1) );
+                    ^
+cc1.exe: all warnings being treated as errors
+Compilation failed
+7f28024
