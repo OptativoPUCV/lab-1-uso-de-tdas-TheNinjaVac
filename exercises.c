@@ -167,7 +167,7 @@ int parentesisBalanceados(char *cadena) {
    
    while (top(PilaC2) != NULL)
    {
-      if ( (top(PilaC2)) == (top(PilaC1))) return 1;
+      if ( (top(PilaC2)) != (top(PilaC1))) return 1;
       pop(PilaC1);
       pop(PilaC2);
    }
