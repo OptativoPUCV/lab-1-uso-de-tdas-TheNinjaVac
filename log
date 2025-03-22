@@ -132,3 +132,28 @@ exercises.c:149:20: error: format '%c' expects argument of type 'int', but argum
 cc1.exe: all warnings being treated as errors
 Compilation failed
 7f28024
+Fri, Mar 21, 2025 10:32:05 PM: 
+ exercises.c | 11 ++++-------
+ 1 file changed, 4 insertions(+), 7 deletions(-)
+In file included from test.c:5:0:
+exercises.c: In function 'parentesisBalanceados':
+exercises.c:132:26: error: passing argument 2 of 'push' makes pointer from integer without a cast [-Werror=int-conversion]
+       push(pilaAuxiliar, caracter);
+                          ^~~~~~~~
+In file included from exercises.c:7:0,
+                 from test.c:5:
+stack.h:11:6: note: expected 'void *' but argument is of type 'char'
+ void push(Stack *stack, void *data) { pushFront(stack, data); }
+      ^~~~
+In file included from test.c:5:0:
+exercises.c:133:20: error: passing argument 2 of 'push' makes pointer from integer without a cast [-Werror=int-conversion]
+       push(PilaC1, caracter);
+                    ^~~~~~~~
+In file included from exercises.c:7:0,
+                 from test.c:5:
+stack.h:11:6: note: expected 'void *' but argument is of type 'char'
+ void push(Stack *stack, void *data) { pushFront(stack, data); }
+      ^~~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+9c34c69
