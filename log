@@ -418,3 +418,28 @@ Sat, Mar 22, 2025 10:11:09 PM:
  tests:  5|1
 total_score: 50/70
 033ec7c
+Sat, Mar 22, 2025 10:12:00 PM: 
+ exercises.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+In file included from test.c:5:0:
+exercises.c: In function 'parentesisBalanceados':
+exercises.c:151:11: error: passing argument 1 of 'pop' from incompatible pointer type [-Werror=incompatible-pointer-types]
+       pop(topepila1);
+           ^~~~~~~~~
+In file included from exercises.c:7:0,
+                 from test.c:5:
+stack.h:17:7: note: expected 'Stack * {aka struct List *}' but argument is of type 'char *'
+ void *pop(Stack *stack) { return popFront(stack); }
+       ^~~
+In file included from test.c:5:0:
+exercises.c:152:11: error: passing argument 1 of 'pop' from incompatible pointer type [-Werror=incompatible-pointer-types]
+       pop(topepila2);
+           ^~~~~~~~~
+In file included from exercises.c:7:0,
+                 from test.c:5:
+stack.h:17:7: note: expected 'Stack * {aka struct List *}' but argument is of type 'char *'
+ void *pop(Stack *stack) { return popFront(stack); }
+       ^~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+08079f8
