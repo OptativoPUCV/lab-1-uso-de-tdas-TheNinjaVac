@@ -122,31 +122,36 @@ paraéntesis balanceados. Retorna 1 si están balanceados,
 */
 
 int parentesisBalanceados(char *cadena) {
-   Stack* pila = create_stack();
+   Stack* pila1 = create_stack();
+   Stack* pila2 = create_stack();
+   Stack* pilaAuxiliar = create_stack();
 
    for (size_t i = 0; cadena[i] != '\0'; i++) {
-       char caracter = cadena[i];
-
-       if (caracter == '(' || caracter == '[' || caracter == '{') {
-           char *ptrChar = (char*) malloc(sizeof(char));
-           *ptrChar = caracter;
-           push(pila, ptrChar);
-       } else if (caracter == ')' || caracter == ']' || caracter == '}') {
-           if (top(pila) == NULL) return 1; // Retorna 1 si hay un cierre sin apertura
-           char *tope = (char*) pop(pila); // Recuperamos el valor de la pila
-           int distancia = (int)caracter - (int)(*tope);
-           free(tope); // Liberamos memoria después de usar
-
-           if (distancia > 2) return 1; // Retorna 1 si hay un error de emparejamiento
-       }
+      char caracter = cadena[i];
+      char *ptrChar = (char*) malloc(sizeof(char));
+      *ptrChar = caracter;
+      push(pila1, ptrChar);
+      push(pilaAuxiliar, ptrChar);
+   }
+   while (top(pilaAuxiliar) != NULL)
+   {
+      push(pila2, top(pilaAuxiliar));
+      pop(pilaAuxiliar);
    }
 
-   int balanceado = (top(pila) == NULL) ? 0 : 1; // Si la pila queda vacía, es balanceado (0), si no, es 1.
+   while (top(pila1) != NULL && top(pila2) != NULL) {
+      char *topepila1 = (char*) pop(pila1);
+      char *topepila2 = (char*) pop(pila2);
+      int distancia = (int)(*topepila2) - (int)(*topepila1);
+      
+      // Condición corregida: solo se permite distancia 1 o 2
+      if (distancia > 2 || distancia < 1) {
+         free(topepila1);
+         free(topepila2);
+         return 1; // No balanceado
+      }
 
-   // Vaciar la pila en caso de que queden elementos (evita fugas de memoria)
-   while (top(pila) != NULL) {
-       free(pop(pila));
-   }
 
-   return balanceado;
+
+   return 0;
 }
