@@ -236,3 +236,58 @@ Fri, Mar 21, 2025 11:06:12 PM:
  tests:  4|1
 total_score: 50/70
 8b4218c
+Sat, Mar 22, 2025  9:42:31 PM: 
+ exercises.c | 1 -
+ 1 file changed, 1 deletion(-)
+In file included from test.c:6:0:
+arraylist.c: In function 'create_list':
+arraylist.c:15:34: error: invalid application of 'sizeof' to incomplete type 'List {aka struct List}'
+   List* L = (List*)malloc(sizeof(List));
+                                  ^~~~
+arraylist.c:16:4: error: dereferencing pointer to incomplete type 'List {aka struct List}'
+   L->current = 0;
+    ^~
+test.c: In function 'parentesisBalanceados':
+test.c:253:5: error: 'main' is normally a non-static function [-Werror=main]
+ int main( int argc, char *argv[] ) {
+     ^~~~
+test.c:271:1: error: expected declaration or statement at end of input
+ }
+ ^
+test.c:271:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+In file included from test.c:6:0:
+arraylist.c: In function 'first':
+arraylist.c:27:1: error: control reaches end of non-void function [-Werror=return-type]
+ }
+ ^
+At top level:
+test.c:253:5: error: 'main' defined but not used [-Werror=unused-function]
+ int main( int argc, char *argv[] ) {
+     ^~~~
+test.c:37:6: error: 'info_msg' defined but not used [-Werror=unused-function]
+ void info_msg(char* msg){
+      ^~~~~~~~
+In file included from test.c:6:0:
+arraylist.c:102:5: error: 'get_size' defined but not used [-Werror=unused-function]
+ int get_size(List *L) {
+     ^~~~~~~~
+arraylist.c:89:7: error: 'popCurrent' defined but not used [-Werror=unused-function]
+ void* popCurrent(List *L) {
+       ^~~~~~~~~~
+arraylist.c:80:7: error: 'popBack' defined but not used [-Werror=unused-function]
+ void* popBack(List *L) {
+       ^~~~~~~
+arraylist.c:68:7: error: 'popFront' defined but not used [-Werror=unused-function]
+ void* popFront(List *L) {
+       ^~~~~~~~
+arraylist.c:55:6: error: 'pushCurrent' defined but not used [-Werror=unused-function]
+ void pushCurrent(List *L, void *dato) {
+      ^~~~~~~~~~~
+arraylist.c:37:6: error: 'pushFront' defined but not used [-Werror=unused-function]
+ void pushFront(List *L, void *dato) {
+      ^~~~~~~~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+d31b07e
