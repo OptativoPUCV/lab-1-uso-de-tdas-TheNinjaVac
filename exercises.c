@@ -150,7 +150,7 @@ int parentesisBalanceados(char *cadena) {
          free(topepila2);
          return 1; // No balanceado
       }
-
+   }
 
 
    return 0;
