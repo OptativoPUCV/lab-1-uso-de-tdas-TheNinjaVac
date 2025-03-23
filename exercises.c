@@ -142,7 +142,7 @@ int parentesisBalanceados(char *cadena) {
    while (top(pila1) != NULL && top(pila2) != NULL) {
       char *topepila1 = (char*) top(pila1);
       char *topepila2 = (char*) top(pila2);
-      int distancia = (int)(*topepila2) - (int)(*topepila1);
+      int distancia = (int)(*topepila1) - (int)(*topepila2);
       
       printf("Distancia: %d\n", distancia); // Para depuración
 
