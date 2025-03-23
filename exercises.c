@@ -152,7 +152,7 @@ int parentesisBalanceados(char *cadena) {
          printf("Comparando: %c (%d) con %c (%d) -> Distancia: %d\n", 
                 *tope, *tope, caracter, caracter, distancia);
          
-         if (distancia != 1 && distancia != 2) {
+         if (distancia != 1 || distancia != 2) {
             free(tope);
             return 1; // No balanceado
          }
