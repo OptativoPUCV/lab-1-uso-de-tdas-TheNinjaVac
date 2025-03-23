@@ -121,50 +121,35 @@ paraéntesis balanceados. Retorna 1 si están balanceados,
 0 en caso contrario.
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-
 int parentesisBalanceados(char *cadena) {
-   Stack* pila = create_stack();
+   Stack* pila1 = create_stack();
+   Stack* pila2 = create_stack();
+   Stack* pilaAuxiliar = create_stack();
 
    for (size_t i = 0; cadena[i] != '\0'; i++) {
       char caracter = cadena[i];
-      printf("Leyendo: %c\n", caracter);
+      char *ptrChar = (char*) malloc(sizeof(char));
+      *ptrChar = caracter;
+      push(pila1, ptrChar);
+      push(pilaAuxiliar, ptrChar);
+   }
+   while (top(pilaAuxiliar) != NULL)
+   {
+      push(pila2, top(pilaAuxiliar));
+      pop(pilaAuxiliar);
+   }
 
-      // Si es paréntesis de apertura, lo metemos en la pila
-      if (caracter == '(' || caracter == '{' || caracter == '[') {
-         char *ptrChar = (char*) malloc(sizeof(char));
-         *ptrChar = caracter;
-         push(pila, ptrChar);
-         printf("PUSH -> %c\n", *ptrChar);
-      } 
-      // Si es paréntesis de cierre, verificamos el tope de la pila
-      else if (caracter == ')' || caracter == '}' || caracter == ']') {
-         if (top(pila) == NULL) {
-            printf("Error: Intento de pop en pila vacía\n");
-            return 1;  // No balanceado
-         }
-
-         char *tope = (char*) pop(pila);
-         printf("POP -> %c\n", *tope);
-
-         int distancia = (int)caracter - (int)(*tope);
-         printf("Comparando: %c (%d) con %c (%d) -> Distancia: %d\n", 
-                *tope, *tope, caracter, caracter, distancia);
-         
-         if (distancia != 1 || distancia != 2) {
-            free(tope);
-            return 1; // No balanceado
-         }
-         free(tope);
+   while (top(pila1) != NULL && top(pila2) != NULL) {
+      char *topepila1 = (char*) pop(pila1);
+      char *topepila2 = (char*) pop(pila2);
+      int distancia = (int)(*topepila2) - (int)(*topepila1);
+      
+      // Condición corregida: solo se permite distancia 1 o 2
+      if (distancia > 2 || distancia < 1) {
+         free(topepila1);
+         free(topepila2);
+         return 1; // No balanceado
       }
    }
-
-   // Si quedan elementos en la pila, está mal balanceado
-   if (top(pila) != NULL) {
-      printf("Error: Pila no vacía al final\n");
-      return 1;
-   }
-
-   return 0; // Está balanceado
+   return 0;
 }
