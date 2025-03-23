@@ -148,8 +148,8 @@ int parentesisBalanceados(char *cadena) {
       if (distancia != 2 || distancia != 1) {
          return 1; // No balanceado
       }
-      pop(topepila1);
-      pop(topepila2);
+      pop(pila1);
+      pop(pila2);
    }
    return 0;
 }

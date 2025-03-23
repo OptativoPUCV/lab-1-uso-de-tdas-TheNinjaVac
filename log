@@ -443,3 +443,9 @@ stack.h:17:7: note: expected 'Stack * {aka struct List *}' but argument is of ty
 cc1.exe: all warnings being treated as errors
 Compilation failed
 08079f8
+Sat, Mar 22, 2025 10:12:39 PM: 
+ exercises.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests:  5|1
+total_score: 50/70
+ea2fc0d
