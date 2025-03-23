@@ -142,10 +142,11 @@ int parentesisBalanceados(char *cadena) {
    while (top(pila1) != NULL) {
       char *topepila1 = (char*) top(pila1);
       char *topepila2 = (char*) top(pila2);
-      int distancia = (int)(*topepila1) - (int)(*topepila2);
+      int distancia1 = (int)(*topepila1) - (int)(*topepila2);
+      int distancia2 = (int)(*topepila2) - (int)(*topepila1);
       printf("A ");
-      printf("%d\n", distancia);
-      if (distancia > 2 && distancia < -1){
+      printf("%d %d\n", distancia1, distancia2);
+      if (distancia1 != (-distancia2)){
          return 1; // No balanceado
       }
       pop(pila1);
