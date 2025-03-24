@@ -125,27 +125,27 @@ int parentesisBalanceados(char *cadena) {
    Stack* pila1 = create_stack();
    Stack* pila2 = create_stack();
    Stack* pilaAuxiliar = create_stack();
-
+   int contador = 0;
    for (size_t i = 0; cadena[i] != '\0'; i++) {
       char caracter = cadena[i];
       char *ptrChar = (char*) malloc(sizeof(char));
       *ptrChar = caracter;
       push(pila1, ptrChar);
       push(pilaAuxiliar, ptrChar);
+      contador ++;
    }
+   if(contador%2 != 0) return 1;
    while (top(pilaAuxiliar) != NULL)
    {
       push(pila2, top(pilaAuxiliar));
       pop(pilaAuxiliar);
    }
 
+
    while (top(pila1) != NULL && top(pila2) != NULL) {
       char *topepila1 = (char*) top(pila1);
       char *topepila2 = (char*) top(pila2);
       int distancia = (int)(*topepila1) - (int)(*topepila2);
-      
-      printf("Distancia: %d\n", distancia);
-
       if (!(distancia == 1 || distancia == 2)) {
          return 1;
       }
