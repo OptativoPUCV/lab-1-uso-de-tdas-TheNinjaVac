@@ -134,7 +134,7 @@ int parentesisBalanceados(char *cadena) {
       push(pilaAuxiliar, ptrChar);
       contador ++;
    }
-   if(contador%2 != 0) return 1;
+   if(contador%2 != 0) return 0;
    while (top(pilaAuxiliar) != NULL)
    {
       push(pila2, top(pilaAuxiliar));
@@ -142,11 +142,10 @@ int parentesisBalanceados(char *cadena) {
    }
 
 
-   while (top(pila1) != NULL && top(pila2) != NULL) {
+   while (top(pila1) != NULL) {
       char *topepila1 = (char*) top(pila1);
       char *topepila2 = (char*) top(pila2);
-      int distancia = (int)(*topepila1) - (int)(*topepila2);
-      if ((distancia == 1 || distancia == 2)) {
+      if ((*topepila1) != (*topepila2)) {
          return 0;
       }
       pop(pila1);
