@@ -128,21 +128,18 @@ int parentesisBalanceados(char *cadena) {
       char c = cadena[i];
 
       if (c == '(' || c == '{' || c == '[') {
-         // Apilamos los paréntesis de apertura
          char *ptrChar = (char*) malloc(sizeof(char));
          *ptrChar = c;
          push(pila, ptrChar);
       } 
       else if (c == ')' || c == '}' || c == ']') {
-         if (top(pila) == NULL) return 1;
-
-         // Comprobar si el tope de la pila es el par correspondiente
+         if (top(pila) == NULL) return 0;
          char *tope = (char*) pop(pila);
          if ((c == ')' && *tope != '(') ||
              (c == '}' && *tope != '{') ||
              (c == ']' && *tope != '[')) {
             free(tope);
-            return 0; // No balanceado
+            return 0;
          }
          free(tope);
       }
