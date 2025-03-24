@@ -122,27 +122,32 @@ paraéntesis balanceados. Retorna 1 si están balanceados,
 */
 
 int parentesisBalanceados(char *cadena) {
-   Stack* pila1 = create_stack();
-   Stack* pila2 = create_stack();
-   Stack* pilaAuxiliar = create_stack();
-   int contador = 0;
+   Stack* pila = create_stack(); // Usamos solo una pila
+
    for (size_t i = 0; cadena[i] != '\0'; i++) {
       char caracter = cadena[i];
-      char *ptrChar = (char*) malloc(sizeof(char));
-      *ptrChar = caracter;
-      push(pila1, ptrChar);
-      push(pilaAuxiliar, ptrChar);
-      contador ++;
+
+      if (caracter == '(' || caracter == '{' || caracter == '[') {
+         // Apilamos los paréntesis de apertura
+         char *ptrChar = (char*) malloc(sizeof(char));
+         *ptrChar = caracter;
+         push(pila, ptrChar);
+      } 
+      else if (caracter == ')' || caracter == '}' || caracter == ']') {
+         // Si la pila está vacía, hay más cierres que aperturas
+         if (top(pila) == NULL) return 1;
+
+         // Comprobar si el tope de la pila es el par correspondiente
+         char *tope = (char*) pop(pila);
+         if ((caracter == ')' && *tope != '(') ||
+             (caracter == '}' && *tope != '{') ||
+             (caracter == ']' && *tope != '[')) {
+            free(tope);
+            return 1; // No balanceado
+         }
+         free(tope);
+      }
    }
-   while (top(pilaAuxiliar) != NULL)
-   {
-      push(pila2, top(pilaAuxiliar));
-      pop(pilaAuxiliar);
-   }
-   while (top(pila1) != NULL) {
-      if (top(pila1) != top(pila2)) return 0;
-      pop(pila1);
-      pop(pila2);
-   }
-   return 1;
+
+   return (top(pila) == NULL) ? 0 : 1; // Si queda algo en la pila, no está balanceado
 }
