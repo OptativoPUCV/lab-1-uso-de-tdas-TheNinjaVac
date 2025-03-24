@@ -688,3 +688,9 @@ exercises.c:124:5: note: expected 'char' but argument is of type 'char *'
 cc1.exe: all warnings being treated as errors
 Compilation failed
 8fd1f64
+Sun, Mar 23, 2025 11:07:40 PM: 
+ exercises.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+ tests:  9|0
+total_score: 70/70
+c3519e7
