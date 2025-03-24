@@ -125,29 +125,28 @@ int parentesisBalanceados(char *cadena) {
    Stack* pila = create_stack(); // Usamos solo una pila
 
    for (size_t i = 0; cadena[i] != '\0'; i++) {
-      char caracter = cadena[i];
+      char c = cadena[i];
 
-      if (caracter == '(' || caracter == '{' || caracter == '[') {
+      if (c == '(' || c == '{' || c == '[') {
          // Apilamos los paréntesis de apertura
          char *ptrChar = (char*) malloc(sizeof(char));
-         *ptrChar = caracter;
+         *ptrChar = c;
          push(pila, ptrChar);
       } 
-      else if (caracter == ')' || caracter == '}' || caracter == ']') {
-         // Si la pila está vacía, hay más cierres que aperturas
+      else if (c == ')' || c == '}' || c == ']') {
          if (top(pila) == NULL) return 1;
 
          // Comprobar si el tope de la pila es el par correspondiente
          char *tope = (char*) pop(pila);
-         if ((caracter == ')' && *tope != '(') ||
-             (caracter == '}' && *tope != '{') ||
-             (caracter == ']' && *tope != '[')) {
+         if ((c == ')' && *tope != '(') ||
+             (c == '}' && *tope != '{') ||
+             (c == ']' && *tope != '[')) {
             free(tope);
             return 0; // No balanceado
          }
          free(tope);
       }
    }
-
+   if (top(pila) == NULL) return 0;
    return 1; 
 }
