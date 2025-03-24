@@ -146,11 +146,11 @@ int parentesisBalanceados(char *cadena) {
       char *topepila1 = (char*) top(pila1);
       char *topepila2 = (char*) top(pila2);
       int distancia = (int)(*topepila1) - (int)(*topepila2);
-      if (!(distancia == 1 || distancia == 2)) {
-         return 1;
+      if ((distancia == 1 || distancia == 2)) {
+         return 0;
       }
       pop(pila1);
       pop(pila2);
    }
-   return 0;
+   return 1;
 }
