@@ -143,11 +143,11 @@ int parentesisBalanceados(char *cadena) {
              (caracter == '}' && *tope != '{') ||
              (caracter == ']' && *tope != '[')) {
             free(tope);
-            return 1; // No balanceado
+            return 0; // No balanceado
          }
          free(tope);
       }
    }
 
-   return (top(pila) == NULL) ? 0 : 1; // Si queda algo en la pila, no está balanceado
+   return 1; 
 }
