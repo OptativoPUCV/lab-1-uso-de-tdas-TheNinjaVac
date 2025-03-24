@@ -638,3 +638,53 @@ Sun, Mar 23, 2025 11:04:15 PM:
  tests:  4|1
 total_score: 50/70
 02b9548
+Sun, Mar 23, 2025 11:07:07 PM: 
+ exercises.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+In file included from test.c:5:0:
+exercises.c: In function 'parentesisBalanceados':
+exercises.c:127:27: error: subscripted value is neither array nor pointer nor vector
+     for (int i = 0; cadena[i] != '\0'; i++) {
+                           ^
+exercises.c:128:31: error: subscripted value is neither array nor pointer nor vector
+         char caracter = cadena[i];
+                               ^
+exercises.c:130:30: error: cast from pointer to integer of different size [-Werror=pointer-to-int-cast]
+             char *char_ptr = (char)malloc(sizeof(char));
+                              ^
+exercises.c:130:30: error: initialization makes pointer from integer without a cast [-Werror=int-conversion]
+exercises.c:138:34: error: called object is not a function or function pointer
+             if ((caracter == ')' && tope != '(')  (caracter == '}' && tope != '{')  (caracter == ']' && tope != '[')) {
+                 ~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~
+test.c: In function 'test_parentesis_balanceados':
+test.c:217:31: error: passing argument 1 of 'parentesisBalanceados' makes integer from pointer without a cast [-Werror=int-conversion]
+     if(!parentesisBalanceados(s)){
+                               ^
+In file included from test.c:5:0:
+exercises.c:124:5: note: expected 'char' but argument is of type 'char *'
+ int parentesisBalanceados(char cadena) {
+     ^~~~~~~~~~~~~~~~~~~~~
+test.c:225:30: error: passing argument 1 of 'parentesisBalanceados' makes integer from pointer without a cast [-Werror=int-conversion]
+     if(parentesisBalanceados(s)){
+                              ^
+In file included from test.c:5:0:
+exercises.c:124:5: note: expected 'char' but argument is of type 'char *'
+ int parentesisBalanceados(char cadena) {
+     ^~~~~~~~~~~~~~~~~~~~~
+test.c:233:31: error: passing argument 1 of 'parentesisBalanceados' makes integer from pointer without a cast [-Werror=int-conversion]
+     if(!parentesisBalanceados(s)){
+                               ^
+In file included from test.c:5:0:
+exercises.c:124:5: note: expected 'char' but argument is of type 'char *'
+ int parentesisBalanceados(char cadena) {
+     ^~~~~~~~~~~~~~~~~~~~~
+test.c:241:30: error: passing argument 1 of 'parentesisBalanceados' makes integer from pointer without a cast [-Werror=int-conversion]
+     if(parentesisBalanceados(s)){
+                              ^
+In file included from test.c:5:0:
+exercises.c:124:5: note: expected 'char' but argument is of type 'char *'
+ int parentesisBalanceados(char cadena) {
+     ^~~~~~~~~~~~~~~~~~~~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+8fd1f64
