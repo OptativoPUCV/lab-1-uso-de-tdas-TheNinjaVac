@@ -515,3 +515,23 @@ Sun, Mar 23, 2025 10:42:39 PM:
  tests:  4|1
 total_score: 50/70
 0585122
+Sun, Mar 23, 2025 10:49:47 PM: 
+ exercises.c | 8 +++-----
+ 1 file changed, 3 insertions(+), 5 deletions(-)
+In file included from test.c:5:0:
+exercises.c: In function 'parentesisBalanceados':
+exercises.c:148:11: error: dereferencing 'void *' pointer [-Werror]
+       if (*top(pila1) != *top(pila2)) return 0;
+           ^~~~~~~~~~~
+exercises.c:148:26: error: dereferencing 'void *' pointer [-Werror]
+       if (*top(pila1) != *top(pila2)) return 0;
+                          ^~~~~~~~~~~
+exercises.c:148:11: error: void value not ignored as it ought to be
+       if (*top(pila1) != *top(pila2)) return 0;
+           ^~~~~~~~~~~
+exercises.c:148:26: error: void value not ignored as it ought to be
+       if (*top(pila1) != *top(pila2)) return 0;
+                          ^~~~~~~~~~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+a473197
